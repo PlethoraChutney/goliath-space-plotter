@@ -1,5 +1,6 @@
 import pandas as pd
 import plotly.express as px
+import sys
 
 # from https://stackoverflow.com/questions/12523586/python-format-size-application-converting-b-to-kb-mb-gb-tb/63839503
 def humanbytes(B):
@@ -34,7 +35,6 @@ def read_table(filename):
     split_paths['Size'] = table['Size']
     split_paths = split_paths[split_paths.Dir.notnull()]
     split_paths["Readable"] = split_paths.Size.apply(humanbytes)
-    print(split_paths)
 
     return(split_paths)
 
@@ -46,8 +46,8 @@ def make_plot(table):
         color = 'User',
         hover_data = ['Readable']
         )
-    fig.show()
+    fig.write_html('goliath_usage.html')
 
 if __name__ == '__main__':
-    table = read_table('test-du.txt')
+    table = read_table(sys.argv[1])
     make_plot(table)
