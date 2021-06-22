@@ -34,6 +34,8 @@ def read_table(filename):
     split_paths.columns = ['Location', 'Lab', 'User', 'Dir']
     split_paths['Size'] = table['Size']
     split_paths = split_paths[split_paths.Dir.notnull()]
+    # Multiply by 1024 b/c du output default is kB
+    split_paths['Size'] = split_paths['Size'] * 1024
     split_paths["Readable"] = split_paths.Size.apply(humanbytes)
 
     return(split_paths)
