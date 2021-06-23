@@ -25,7 +25,7 @@ def humanbytes(B):
 def read_table(filename):
     table = pd.read_table(
         filename,
-        delim_whitespace = True,
+        sep = '\t',
         header = 0,
         names = ['Size', 'Path']
     )
