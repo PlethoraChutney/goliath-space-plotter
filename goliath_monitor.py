@@ -1,6 +1,7 @@
 import pandas as pd
 import plotly.express as px
 import sys
+from datetime import datetime
 
 # from https://stackoverflow.com/questions/12523586/python-format-size-application-converting-b-to-kb-mb-gb-tb/63839503
 def humanbytes(B):
@@ -46,7 +47,8 @@ def make_plot(table):
         path = ['Location', 'Lab', 'User', 'Dir'],
         values = 'Size',
         color = 'User',
-        hover_data = ['Readable']
+        hover_data = ['Readable'],
+        title = f'Goliath Usage {datetime.today().strftime("%Y-%m-%d")}'
         )
     fig.write_html('goliath_usage.html')
 
