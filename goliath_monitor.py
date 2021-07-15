@@ -42,13 +42,15 @@ def read_table(filename):
     return(split_paths)
 
 def make_plot(table):
+    total = sum(table['Size'])
+
     fig = px.sunburst(
         table,
         path = ['Location', 'Lab', 'User', 'Dir'],
         values = 'Size',
         color = 'User',
         hover_data = ['Readable'],
-        title = f'Goliath Usage {datetime.today().strftime("%Y-%m-%d")}'
+        title = f'Goliath Usage {datetime.today().strftime("%Y-%m-%d")}; Size: {humanbytes(total)}'
         )
     fig.write_html('goliath_usage.html')
 
