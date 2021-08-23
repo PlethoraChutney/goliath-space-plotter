@@ -56,4 +56,5 @@ def make_plot(table):
 
 if __name__ == '__main__':
     table = read_table(sys.argv[1])
+    table.to_csv('goliath-du.csv')
     make_plot(table)
