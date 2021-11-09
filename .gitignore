@@ -1,3 +1,5 @@
 *.html
 *.txt
 __pycache__/
+*.csv
+update-plot
